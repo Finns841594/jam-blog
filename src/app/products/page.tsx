@@ -10,10 +10,11 @@ dotenv.config();
 export default async function ProductsList() {
 	const getData = async () => {
 		const p = await axios
-			.get(process.env.APIACCESS!)
-			.then(res => res.data.items[0].fields.products);
+			.get('http://localhost:3000/api/products')
+			.then(res => res.data);
 		return p;
 	};
+
 	const products = await getData();
 
 	return (
@@ -22,8 +23,10 @@ export default async function ProductsList() {
 			<div>
 				<ul>
 					{products.map((item: any) => (
-						<li key={item}>
-							<a href={'./products/' + item}>{item}</a>
+						<li key={item.fields.productId}>
+							<a href={'./products/' + item.fields.productId}>
+								{item.fields.productName}
+							</a>
 						</li>
 					))}
 				</ul>
