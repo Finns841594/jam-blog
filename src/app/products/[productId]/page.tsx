@@ -8,7 +8,7 @@ export default async function Products({ params }: any) {
 	// Get product info from contentful'
 	const getData = async () => {
 		const p = await axios
-			.get('http://localhost:3000/api/products/' + params.productId)
+			.get(`${process.env.APIBASE_URL}/products/` + params.productId)
 			.then(res => res.data);
 		return p;
 	};

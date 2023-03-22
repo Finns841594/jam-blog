@@ -1,8 +1,5 @@
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
 import styles from '../page.module.css';
 import axios from 'axios';
-import { useState } from 'react';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -10,7 +7,7 @@ dotenv.config();
 export default async function ProductsList() {
 	const getData = async () => {
 		const p = await axios
-			.get('http://localhost:3000/api/products')
+			.get(`${process.env.APIBASE_URL}/products/`)
 			.then(res => res.data);
 		return p;
 	};
