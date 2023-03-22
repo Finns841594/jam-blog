@@ -10,7 +10,6 @@ export default async function Products({ params }: any) {
 		const p = await axios
 			.get('http://localhost:3000/api/products/' + params.productId)
 			.then(res => res.data);
-		// console.log('😍', p);
 		return p;
 	};
 	const product = await getData();

@@ -9,9 +9,8 @@ const connectToDb = async (): Promise<MongoClient> => {
 	return client;
 };
 
-export async function GET(request: NextApiRequest) {
-	const prodId = Number(request.query);
-	console.log('😍😍😍😍😍', request.url);
+export async function GET(request: NextApiRequest, { params }: any) {
+	const prodId = Number(params.productId);
 
 	// Get product info from contentful'
 	const getData = async () => {
